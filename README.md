@@ -1,1 +1,0 @@
-# QA_Auto_Homework_1_Irina_P
