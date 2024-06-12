@@ -1,0 +1,17 @@
+<dog>
+    <breed>Golden Retriever</breed>
+    <name>Shanti</name>
+    <sex>Female</sex>
+    <colour>Golden</colour>
+    <age>6</age>
+    <ageValue>month</ageValue>
+    <weight>23.5</weight>
+    <weightValue>kg</weightValue>
+    <isTrained>true</isTrained>
+    <isVaccinated>true</isVaccinated>
+    <favoriteFoods>
+        <food>Meat</food>
+        <food>Cucumber</food>
+        <food>Strawberry</food>
+    </favoriteFoods>
+</dog>
