@@ -1,0 +1,13 @@
+{
+    "breed": "Golden Retriever",
+    "name": "Shanti",
+    "sex": "Female", 
+    "colour": "Golden",
+    "age": 6,
+    "ageValue": "month",
+    "weight": 23.5,
+    "weightValue": "kg",
+    "isTrained": true,
+    "isVaccinated": true, 
+    "favoriteFoods": ["Meat", "Cucumber", "Strawberry"]
+}
