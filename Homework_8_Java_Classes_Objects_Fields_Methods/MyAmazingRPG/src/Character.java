@@ -30,8 +30,8 @@ public class Character {
 		if (damage < 0) {
 			damage = 0;
 		}
+		System.out.println("\n" + this.name + " атакует " + other.name + " на  " + damage + " урона.");
 		other.takeDamage(damage);
-		System.out.println(this.name + " атакует " + other.name + " на  " + damage + " урона.");
 	}
 
 	/**
@@ -44,7 +44,7 @@ public class Character {
 		if (this.health <= 0) {
 			this.isAlive = false;
 		}
-		System.out.println("\n" + this.name + " получает " + damage + " урон. Здоровье сейчас " + this.health);
+		System.out.println(this.name + " получает " + damage + " урон. Здоровье сейчас " + this.health);
 	}
 
 	/**

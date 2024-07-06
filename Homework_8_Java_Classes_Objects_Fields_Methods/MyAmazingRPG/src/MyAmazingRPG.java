@@ -46,13 +46,16 @@ public class MyAmazingRPG {
 
         while (hero.checkLifeStatus() && enemy.checkLifeStatus()) {
             hero.attack(enemy);
-            if (enemy.checkLifeStatus()) {
-                enemy.attack(hero);
-            }
-
-            System.out.println("\nСостояние персонажей после атаки: ");
+            System.out.println("\nСостояние персонажей после атаки героя: ");
             hero.displayStatus();
             enemy.displayStatus();
+
+            if (enemy.checkLifeStatus()) {
+                enemy.attack(hero);
+                System.out.println("\nСостояние персонажей после атаки противника: ");
+                hero.displayStatus();
+                enemy.displayStatus();
+            }
 
         }
 
