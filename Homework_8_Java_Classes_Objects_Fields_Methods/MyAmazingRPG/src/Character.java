@@ -4,10 +4,7 @@ public class Character {
 	int health; //Кількість очок здоров'я персонажа.
 	int strength; //Атрибут сили, який впливає на силу атаки.
 	int defense; //Атрибут захисту, який впливає на зменшення шкоди.
-//	boolean isInBattle = false; //Находится ли персонаж в бою? (по умолчанию не в бою)
 	boolean isAlive = true; //Жив ли персонаж? (по умолчанию жив)
-//	boolean isEnemy = false; //Враг ли это?
-//	boolean isTeam = false; //Находится ли игрок в моей команде
 	static int characterCount; //Статичне поле для відстеження кількості створених персонажів.
 
 	public Character(String name, int health, int strength, int defense) {
@@ -15,8 +12,6 @@ public class Character {
 		this.health = health;
 		this.strength = strength;
 		this.defense = defense;
-//        this.isInBattle = false; //по умолчанию персонаж не в бою
-//        this.isAlive = true; //по умолчанию персонаж жив
 		characterCount++;
 	}
 
@@ -59,11 +54,6 @@ public class Character {
 	 */
 	public void displayStatus() {
 		System.out.println(this.name + " - Здоровье: " + this.health + ", Сила: " + this.strength + ", Защита: " + this.defense);
-//		System.out.println("Имя персонажа: " + this.name);
-//		System.out.println("Здоровье " + this.health);
-//		System.out.println("Сила " + this.strength);
-//		System.out.println("Защита " + this.defense);
-//		System.out.println("Жив " + this.isAlive);
 	}
 
 	public static int checkCharacterCount() {
