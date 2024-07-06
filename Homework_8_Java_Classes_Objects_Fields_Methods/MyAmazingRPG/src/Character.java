@@ -27,8 +27,7 @@ public class Character {
 	 */
 	public void attack(Character other) {
 		int damage = this.strength - other.defense;
-		if (damage < 0) ;
-		{
+		if (damage < 0) {
 			damage = 0;
 		}
 		other.takeDamage(damage);
@@ -40,12 +39,12 @@ public class Character {
 	 *
 	 * @param damage
 	 */
-	public void takeDamage(int damage,Character other) {
-		other.health = other.health - damage;
-		if (other.health <= 0) {
-			other.isAlive = false;
+	public void takeDamage(int damage) {
+		this.health = this.health - damage;
+		if (this.health <= 0) {
+			this.isAlive = false;
 		}
-		System.out.println(other.name + " получает " + damage + " урон. Здоровье сейчас " + other.health);
+		System.out.println("\n" + this.name + " получает " + damage + " урон. Здоровье сейчас " + this.health);
 	}
 
 	/**
@@ -59,10 +58,15 @@ public class Character {
 	 * Виводить на екран ім'я персонажа, його здоров'я, силу та захист.
 	 */
 	public void displayStatus() {
-		System.out.println("Имя персонажа " + this.name);
-		System.out.println("Здоровье " + this.health);
-		System.out.println("Сила " + this.strength);
-		System.out.println("Защита " + this.defense);
-		System.out.println("Жив" + this.isAlive);
+		System.out.println(this.name + " - Здоровье: " + this.health + ", Сила: " + this.strength + ", Защита: " + this.defense);
+//		System.out.println("Имя персонажа: " + this.name);
+//		System.out.println("Здоровье " + this.health);
+//		System.out.println("Сила " + this.strength);
+//		System.out.println("Защита " + this.defense);
+//		System.out.println("Жив " + this.isAlive);
+	}
+
+	public static int checkCharacterCount() {
+		return characterCount;
 	}
 }
