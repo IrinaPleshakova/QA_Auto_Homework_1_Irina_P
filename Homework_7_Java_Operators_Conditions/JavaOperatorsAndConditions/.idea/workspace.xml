@@ -20,22 +20,22 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "IrinaPleshakova"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;IrinaPleshakova&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/IrinaPleshakova/QA_Auto_Homework_1_Irina_P.git",
-    "accountId": "4e893923-eb07-43b0-ad51-2590cac2bb9b"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/IrinaPleshakova/QA_Auto_Homework_1_Irina_P.git&quot;,
+    &quot;accountId&quot;: &quot;4e893923-eb07-43b0-ad51-2590cac2bb9b&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 2
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2ibpXhd9r844vyOn3x0fFaY8b7J" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -47,7 +47,7 @@
     "Application.CoffeeShopWithInversion.executor": "Run",
     "Application.CoffeeShopWithReturn.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "#6 on java__operators__and__conditions",
+    "git-widget-placeholder": "Homework__8__Java__Classes__Objects__Fields__Methods",
     "kotlin-language-version-configured": "true"
   }
 }]]></component>
