@@ -4,11 +4,13 @@ public class Employee {
 	private String name;
 	private int age;
 	private double salary;
+	private String department;
 
-	public Employee (String name, int age, double salary) {
+	public Employee (String name, int age, double salary, String department) {
 		this.name = name;
 		this.age = age;
 		this.salary = salary;
+		this.department = department;
 	}
 
 	public String getName() {
@@ -35,20 +37,32 @@ public class Employee {
 		this.salary = salary;
 	}
 
+	public String getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(String department) {
+		this.department = department;
+	}
+
 	public void work() {
 		System.out.println(name + " is working.");
 	}
 
 	public void takeBreak() {
-		System.out.println(name + "is taking a break.");
+		System.out.println(name + " is taking a break.");
 	}
 
 	public void performJob() {
-		System.out.println(name + "is performing assigned job");
+		System.out.println(name + " is performing assigned job");
 	}
 
 	public void describeRole() {
-		System.out.println(name + "is an employee with a salary of " + salary);
+		System.out.println(name + " is an employee with a salary of " + salary);
+	}
+
+	public void describeRole(String extraInfo) {
+		System.out.println(name + " is an employee in the " + department + " department." + extraInfo);
 	}
 
 }

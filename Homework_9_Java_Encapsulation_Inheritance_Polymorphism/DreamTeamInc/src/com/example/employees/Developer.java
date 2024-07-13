@@ -2,8 +2,8 @@ package com.example.employees;
 
 public class Developer extends Employee {
 
-	public Developer(String name, int age, double salary) {
-		super(name, age, salary);
+	public Developer(String name, int age, double salary, String department) {
+		super(name, age, salary, department);
 	}
 
 	@Override
@@ -14,5 +14,10 @@ public class Developer extends Employee {
 	@Override
 	public void describeRole() {
 		System.out.println(getName() + " is a developer with a salary of " + getSalary());
+	}
+
+	@Override
+	public void describeRole(String extraInfo) {
+		System.out.println(getName() + " is a developer in the " + getDepartment() + " department."+ extraInfo);
 	}
 }
