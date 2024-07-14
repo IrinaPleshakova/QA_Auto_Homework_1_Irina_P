@@ -1,5 +1,9 @@
 package com.example.employees;
 
+/**
+ * Represents a generic employee with basic attributes and methods.
+ */
+
 public class Employee {
 	private String name;
 	private int age;
@@ -53,16 +57,26 @@ public class Employee {
 		System.out.println(name + " is taking a break.");
 	}
 
+	public String getRole() {
+		return "employee";
+	}
+
 	public void performJob() {
 		System.out.println(name + " is performing assigned job");
 	}
 
 	public void describeRole() {
-		System.out.println(name + " is an employee with a salary of " + salary);
+		System.out.println(name + " is an " + getRole() + " with a salary of " + salary);
 	}
 
 	public void describeRole(String extraInfo) {
-		System.out.println(name + " is an employee in the " + department + " department." + extraInfo);
+		System.out.println(name + " is an " + getRole() + " in the " + department + " department." + extraInfo);
 	}
 
+	public void participateInMeeting() {
+		work();
+	}
+
+	public void takeBreakAfterMeeting() {
+	}
 }
