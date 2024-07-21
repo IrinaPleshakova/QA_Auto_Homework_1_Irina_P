@@ -75,5 +75,21 @@ public class Main {
 			System.out.println(message.getText() + " (Status: " + message.getStatus() + ")");
 		}
 
+		hanna.removeContact(konrad);
+		System.out.println();
+		System.out.println(hanna.getName() + " removing contact: " + konrad.getName());
+		System.out.println("\nHanna's contacts after removing Konrad: ");
+		for (User contact : hanna.getContacts()) {
+			System.out.println(contact.getName());
+		}
+
+		hanna.deleteMessage(message1);
+		System.out.println();
+		System.out.println(hanna.getName() + " deleting a message from: " + bartek.getName());
+		System.out.println("\nHanna's messages after deleting a message: ");
+		for (Message message : hanna.getMessages()) {
+			System.out.println(message.getText() + " (Status: " + message.getStatus() + ")");
+		}
+
 	}
 }

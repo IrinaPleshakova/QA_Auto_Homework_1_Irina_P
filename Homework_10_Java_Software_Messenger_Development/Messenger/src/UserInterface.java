@@ -12,6 +12,8 @@ public interface UserInterface {
 	List<Message> getMessages();
 
 	void addContact(User contact);
+	void removeContact (User contact);
 	void sendMessage(Message message);
 	void receiveMessage(Message message);
+	void deleteMessage(Message message);
 }

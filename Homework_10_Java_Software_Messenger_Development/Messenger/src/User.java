@@ -38,6 +38,11 @@ public class User implements UserInterface {
 		}
 
 		@Override
+		public void removeContact(User contact) {
+		contacts.remove(contact);
+		}
+
+		@Override
 		public void sendMessage(Message message){
 			messages.add(message);
 			message.getReceiver().receiveMessage(message);
@@ -50,7 +55,12 @@ public class User implements UserInterface {
 			messages.add(message);
 		}
 
-		public void readMessage(Message message) {
+		@Override
+		public void deleteMessage(Message message) {
+		messages.remove(message);
+		}
+
+	public void readMessage(Message message) {
 			message.setStatus(MessageStatus.READ);
 		}
 
