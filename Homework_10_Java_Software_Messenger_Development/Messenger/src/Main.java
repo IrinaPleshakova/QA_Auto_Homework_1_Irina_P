@@ -16,20 +16,9 @@ public class Main {
 		bartek.addContact(hanna);
 		konrad.addContact(hanna);
 
-		System.out.println("Hanna's contacts: ");
-		for (User contact : hanna.getContacts()) {
-			System.out.println(contact.getName());
-		}
-
-		System.out.println("\nBartek's contacts: ");
-		for (User contact : bartek.getContacts()) {
-			System.out.println(contact.getName());
-		}
-
-		System.out.println("\nKonrad's contacts: ");
-		for (User contact : konrad.getContacts()) {
-			System.out.println(contact.getName());
-		}
+		hanna.printContacts();
+		bartek.printContacts();
+		konrad.printContacts();
 
 		System.out.println("\nSending messages: ");
 

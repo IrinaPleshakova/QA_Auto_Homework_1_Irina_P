@@ -76,4 +76,12 @@ public class User implements UserInterface {
 		return result;
 	}
 
+	public void printContacts() {
+		System.out.println(this.name + "'s contacts: ");
+		for (User contact :contacts) {
+			System.out.println(contact.getName());
+		}
+		System.out.println();
+	}
+
 }
