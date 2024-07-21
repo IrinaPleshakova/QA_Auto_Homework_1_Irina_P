@@ -44,7 +44,6 @@ public class User implements UserInterface {
 
 		@Override
 		public void sendMessage(Message message){
-			messages.add(message);
 			message.getReceiver().receiveMessage(message);
 			System.out.println("Message sent from " + name + " to " + message.getReceiver().getName() + ": " + message.getText());
 		}
@@ -63,5 +62,18 @@ public class User implements UserInterface {
 	public void readMessage(Message message) {
 			message.setStatus(MessageStatus.READ);
 		}
+
+
+	public static List<Message> findMessagesByStatus(List<User> users, MessageStatus status) {
+		List<Message> result = new ArrayList<>();
+		for (User user : users) {
+			for (Message message : user.getMessages()) {
+				if (message.getStatus() == status) {
+					result.add(message);
+				}
+			}
+		}
+		return result;
+	}
 
 }

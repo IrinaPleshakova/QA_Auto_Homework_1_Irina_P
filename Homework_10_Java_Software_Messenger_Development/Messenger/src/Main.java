@@ -1,3 +1,6 @@
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Main class for testing the messenger functionality.
  */
@@ -28,7 +31,7 @@ public class Main {
 			System.out.println(contact.getName());
 		}
 
-		System.out.println();
+		System.out.println("\nSending messages: ");
 
 		Message message1 = new Message(hanna, bartek, "Hi, Bartek! ");
 		hanna.sendMessage(message1);
@@ -57,7 +60,6 @@ public class Main {
 		System.out.println("\nReading messages...");
 		bartek.readMessage(message1);
 		hanna.readMessage(message2);
-		konrad.readMessage(message3);
 
 
 		System.out.println("\nHanna's messages after reading: ");
@@ -70,7 +72,7 @@ public class Main {
 			System.out.println(message.getText() + " (Status: " + message.getStatus() + ")");
 		}
 
-		System.out.println("\nKonrad's messages after reading: ");
+		System.out.println("\nKonrad's messages not reading: ");
 		for (Message message : konrad.getMessages()) {
 			System.out.println(message.getText() + " (Status: " + message.getStatus() + ")");
 		}
@@ -91,5 +93,26 @@ public class Main {
 			System.out.println(message.getText() + " (Status: " + message.getStatus() + ")");
 		}
 
+		List<User> users = Arrays.asList(hanna, bartek, konrad);
+
+		/**
+		 * Search for messages by RECEIVED status
+		 */
+		List<Message> receivedMessages = User.findMessagesByStatus(users, MessageStatus.RECEIVED);
+		System.out.println("\nReceived messages: ");
+		for (Message message : receivedMessages) {
+			System.out.println("Message sent from " + message.getSender().getName() + " to " + message.getReceiver().getName() +
+					": " + message.getText() + " (Status: " + message.getStatus() + ")");
+		}
+
+		/**
+		 * Search for messages by READ status
+		 */
+		List<Message> readMessages = User.findMessagesByStatus(users, MessageStatus.READ);
+		System.out.println("\nRead messages: ");
+		for (Message message : readMessages) {
+			System.out.println("Message sent from " + message.getSender().getName() + " to " + message.getReceiver().getName() +
+					": " + message.getText() + " (Status: " + message.getStatus() + ")");
+		}
 	}
 }
