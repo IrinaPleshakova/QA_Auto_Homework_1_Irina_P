@@ -1,15 +1,13 @@
 /**
  * Class representing a message in the messenger system.
  */
-
-public class Message implements MessageInterface{
-
+public class Message implements MessageInterface {
 	private User sender;
 	private User receiver;
 	private String text;
 	private MessageStatus status;
 
-	public Message (User sender, User receiver, String text){
+	public Message(User sender, User receiver, String text) {
 		this.sender = sender;
 		this.receiver = receiver;
 		this.text = text;
