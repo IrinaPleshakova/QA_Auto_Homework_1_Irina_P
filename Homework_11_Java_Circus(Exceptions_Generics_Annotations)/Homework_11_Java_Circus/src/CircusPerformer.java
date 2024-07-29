@@ -44,6 +44,7 @@ public class CircusPerformer {
 			}
 		} catch (InvalidExperienceException e) {
 			this.experienceMessage = e.getMessage();
+			this.experience = experience;
 		}
 	}
 }
