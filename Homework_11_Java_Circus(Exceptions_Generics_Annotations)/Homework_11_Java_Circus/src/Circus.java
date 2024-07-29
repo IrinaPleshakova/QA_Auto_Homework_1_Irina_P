@@ -2,6 +2,10 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents a circus with a list of performers.
+ */
+
 public class Circus<T extends CircusPerformer> {
 	private List<T> performers;
 
@@ -13,18 +17,39 @@ public class Circus<T extends CircusPerformer> {
 		performers.add(performer);
 	}
 
+	/**
+	 * Removes a performer from the circus.
+	 */
 	public T removePerformer(T performer) {
-	if (performers != null && performers.remove(performer)) {
-		return performer;
-	} else {
+		if (performers != null && performers.remove(performer)) {
+			return performer;
+		} else {
+			return null;
+		}
+	}
+
+	/**
+	 * Gets a performer by name.
+	 */
+	public T getPerformerByName(String name) {
+		for (T performer : performers) {
+			if (performer.getName().equals(name)) {
+				return performer;
+			}
+		}
 		return null;
 	}
-}
 
+	/**
+	 * Lists all performers in the circus.
+	 */
 	public List<T> listPerformers() {
 		return new ArrayList<>(performers);
 	}
 
+	/**
+	 * Saves the list of performers to a file.
+	 */
 	public void saveToFile(String filename) {
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
 			for (T performer : performers) {
@@ -36,6 +61,9 @@ public class Circus<T extends CircusPerformer> {
 		}
 	}
 
+	/**
+	 * Loads the list of performers from a file.
+	 */
 	public void loadFromFile(String filename) {
 		try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
 			String line;

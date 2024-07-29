@@ -1,3 +1,6 @@
+/**
+ * Represents a circus performer.
+ */
 public class CircusPerformer {
 	private String name;
 	private String act;
@@ -20,6 +23,9 @@ public class CircusPerformer {
 		return experienceMessage;
 	}
 
+	/**
+	 * Exception class for invalid experience values.
+	 */
 	public static class InvalidExperienceException extends Exception {
 		public InvalidExperienceException(String message) {
 			super(message);
@@ -32,6 +38,9 @@ public class CircusPerformer {
 		setExperience(experience);
 	}
 
+	/**
+	 * Sets the experience of the performer, updating the experience message.
+	 */
 	private void setExperience(int experience) {
 		try {
 			if (experience <= 0) {

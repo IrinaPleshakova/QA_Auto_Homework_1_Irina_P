@@ -1,15 +1,13 @@
+/**
+ * Main class to demonstrate the Circus and CircusPerformer functionality.
+ */
 public class Main {
 	public static void main(String[] args) {
 		Circus<CircusPerformer> circus = new Circus<>();
-		CircusPerformer alice = new CircusPerformer("Alice", "Juggler", 5);
-		CircusPerformer emma = new CircusPerformer("Emma", "Fire eater", 10);
-		CircusPerformer shawn = new CircusPerformer("Shawn", "Clown", 51);
-		CircusPerformer bob = new CircusPerformer("Bob", "Magician", 0);
-
-		circus.addPerformer(alice);
-		circus.addPerformer(emma);
-		circus.addPerformer(shawn);
-		circus.addPerformer(bob);
+		circus.addPerformer(new CircusPerformer("Alice", "Juggler", 5));
+		circus.addPerformer(new CircusPerformer("Emma", "Fire eater", 10));
+		circus.addPerformer(new CircusPerformer("Shawn", "Clown", 51));
+		circus.addPerformer(new CircusPerformer("Bob", "Magician", 0));
 
 		circus.saveToFile("circusPerformers.txt");
 
@@ -21,19 +19,12 @@ public class Main {
 			System.out.println(performer.getName() + ", " + performer.getAct() + ", " + performer.getExperienceMessage());
 		}
 
-		CircusPerformer performerToRemove = null;
-		for (CircusPerformer performer : ourCircus.listPerformers()) {
-			if (performer.getName().equals("Shawn")) {
-				performerToRemove = performer;
-				break;
-			}
-		}
-
-		CircusPerformer removedPerformer = ourCircus.removePerformer(performerToRemove);
-		if (removedPerformer != null) {
+		CircusPerformer performerToRemove = ourCircus.getPerformerByName("Shawn");
+		if (performerToRemove != null) {
+			CircusPerformer removedPerformer = ourCircus.removePerformer(performerToRemove);
 			System.out.println("\nRemoved performer: " + removedPerformer.getName());
 		} else {
-			System.out.println("Performer not found.");
+			System.out.println("\nPerformer not found.");
 		}
 
 		System.out.println("Performers in our circus after removal:");
