@@ -5,9 +5,28 @@ public class Main {
 		CircusPerformer shawn = new CircusPerformer("Shawn", "Clown", 51);
 		CircusPerformer bob = new CircusPerformer("Bob", "Magician", 0);
 
-		System.out.println("Performer 1: " + alice.getName() + ", " + alice.getAct() + ", " + alice.getExperienceMessage());
-		System.out.println("Performer 2: " + emma.getName() + ", " + emma.getAct() + ", " + emma.getExperienceMessage());
-		System.out.println("Performer 3: " + shawn.getName() + ", " + shawn.getAct() + ", " + shawn.getExperienceMessage());
-		System.out.println("Performer 4: " + bob.getName() + ", " + bob.getAct() + ", " + bob.getExperienceMessage());
+		Circus<CircusPerformer> circus = new Circus<>();
+		circus.addPerformer(alice);
+		circus.addPerformer(emma);
+		circus.addPerformer(shawn);
+		circus.addPerformer(bob);
+
+		System.out.println("List of performers:");
+		for (CircusPerformer performer : circus.listPerformers()) {
+			System.out.println(performer.getName() + ", " + performer.getAct() + ", " + performer.getExperienceMessage());
+		}
+
+		CircusPerformer removedPerformer = circus.removePerformer(shawn);
+		if (removedPerformer != null) {
+			System.out.println("\nRemoved performer: " + removedPerformer.getName());
+		} else {
+			System.out.println("Performer not found.");
+		}
+
+		circus.removePerformer(shawn);
+		System.out.println("\nList of performers after removing " + removedPerformer.getName() + ":");
+		for (CircusPerformer performer : circus.listPerformers()) {
+			System.out.println(performer.getName() + ", " + performer.getAct() + ", " + performer.getExperienceMessage());
+		}
 	}
 }
