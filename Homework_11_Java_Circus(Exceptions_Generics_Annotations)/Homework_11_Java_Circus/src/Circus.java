@@ -5,7 +5,6 @@ import java.util.List;
 /**
  * Represents a circus with a list of performers.
  */
-
 public class Circus<T extends CircusPerformer> {
 	private List<T> performers;
 
@@ -29,22 +28,25 @@ public class Circus<T extends CircusPerformer> {
 	}
 
 	/**
-	 * Gets a performer by name.
+	 * Prints all performers in the circus.
 	 */
-	public T getPerformerByName(String name) {
+	public void printAllPerformers() {
 		for (T performer : performers) {
-			if (performer.getName().equals(name)) {
-				return performer;
-			}
+			System.out.println(performer.getName() + ", " + performer.getAct() + ", " + performer.getExperienceMessage());
 		}
-		return null;
 	}
 
 	/**
-	 * Lists all performers in the circus.
+	 * Gets performers with invalid experience.
 	 */
-	public List<T> listPerformers() {
-		return new ArrayList<>(performers);
+	public List<T> getInvalidPerformers() {
+		List<T> invalidPerformers = new ArrayList<>();
+		for (T performer : performers) {
+			if (performer.getExperience() < 1 || performer.getExperience() > 50) {
+				invalidPerformers.add(performer);
+			}
+		}
+		return invalidPerformers;
 	}
 
 	/**

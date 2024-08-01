@@ -1,9 +1,12 @@
+import java.util.List;
+
 /**
  * Main class to demonstrate the Circus and CircusPerformer functionality.
  */
 public class Main {
 	public static void main(String[] args) {
 		Circus<CircusPerformer> circus = new Circus<>();
+
 		circus.addPerformer(new CircusPerformer("Alice", "Juggler", 5));
 		circus.addPerformer(new CircusPerformer("Emma", "Fire eater", 10));
 		circus.addPerformer(new CircusPerformer("Shawn", "Clown", 51));
@@ -15,21 +18,23 @@ public class Main {
 		ourCircus.loadFromFile("circusPerformers.txt");
 
 		System.out.println("Performers in our circus:");
-		for (CircusPerformer performer : ourCircus.listPerformers()) {
-			System.out.println(performer.getName() + ", " + performer.getAct() + ", " + performer.getExperienceMessage());
+		ourCircus.printAllPerformers();
+
+		List<CircusPerformer> invalidPerformers = ourCircus.getInvalidPerformers();
+		if (!invalidPerformers.isEmpty()) {
+			System.out.println("\nInvalid experience for the following performers:");
+			for (CircusPerformer performer : invalidPerformers) {
+				System.out.println(performer.getName() + ", " + performer.getExperienceMessage());
+			}
+
+			System.out.println("\nPerformers with invalid experience will be removed:");
+			for (CircusPerformer performer : invalidPerformers) {
+				ourCircus.removePerformer(performer);
+				System.out.println(performer.getName());
+			}
 		}
 
-		CircusPerformer performerToRemove = ourCircus.getPerformerByName("Shawn");
-		if (performerToRemove != null) {
-			CircusPerformer removedPerformer = ourCircus.removePerformer(performerToRemove);
-			System.out.println("\nRemoved performer: " + removedPerformer.getName());
-		} else {
-			System.out.println("\nPerformer not found.");
-		}
-
-		System.out.println("Performers in our circus after removal:");
-		for (CircusPerformer performer : ourCircus.listPerformers()) {
-			System.out.println(performer.getName() + ", " + performer.getAct() + ", " + performer.getExperienceMessage());
-		}
+		System.out.println("\nPerformers in our circus after removal:");
+		ourCircus.printAllPerformers();
 	}
 }

@@ -5,7 +5,6 @@ public class CircusPerformer {
 	private String name;
 	private String act;
 	private int experience;
-	private String experienceMessage;
 
 	public String getName() {
 		return name;
@@ -20,7 +19,11 @@ public class CircusPerformer {
 	}
 
 	public String getExperienceMessage() {
-		return experienceMessage;
+		if (experience < 1 || experience > 50) {
+			return "Experience should be between 1 and 50 years (now " + experience + ")";
+		} else {
+			return experience + " years of experience.";
+		}
 	}
 
 	/**
@@ -39,22 +42,17 @@ public class CircusPerformer {
 	}
 
 	/**
-	 * Sets the experience of the performer, updating the experience message.
+	 * Sets the experience of the performer.
 	 */
 	private void setExperience(int experience) {
-		try {
-			if (experience <= 0) {
-				throw new InvalidExperienceException("First experience - then circus!");
-			} else if (experience > 50) {
-				throw new InvalidExperienceException("Time to retire!");
-			} else {
+		if (experience < 1 || experience > 50) {
+			try {
+				throw new InvalidExperienceException("Experience should be between 1 and 50 years (now " + experience + ")");
+			} catch (InvalidExperienceException e) {
 				this.experience = experience;
-				this.experienceMessage = experience + " years of experience.";
 			}
-		} catch (InvalidExperienceException e) {
-			this.experienceMessage = e.getMessage();
+		} else {
 			this.experience = experience;
 		}
 	}
 }
-
