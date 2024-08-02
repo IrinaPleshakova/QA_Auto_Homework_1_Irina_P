@@ -1,0 +1,4 @@
+Alice, Juggler, 5
+Emma, Fire eater, 10
+Shawn, Clown, 51
+Bob, Magician, 0
