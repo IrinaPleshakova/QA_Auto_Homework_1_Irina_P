@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Represents a circus with a list of performers.
@@ -31,22 +32,17 @@ public class Circus<T extends CircusPerformer> {
 	 * Prints all performers in the circus.
 	 */
 	public void printAllPerformers() {
-		for (T performer : performers) {
-			System.out.println(performer.getName() + ", " + performer.getAct() + ", " + performer.getExperienceMessage());
-		}
+		performers.forEach(performer ->
+				System.out.println(performer.getName() + ", " + performer.getAct() + ", " + performer.getExperienceMessage()));
 	}
 
 	/**
 	 * Gets performers with invalid experience.
 	 */
 	public List<T> getInvalidPerformers() {
-		List<T> invalidPerformers = new ArrayList<>();
-		for (T performer : performers) {
-			if (performer.getExperience() < 1 || performer.getExperience() > 50) {
-				invalidPerformers.add(performer);
-			}
-		}
-		return invalidPerformers;
+		return performers.stream()
+				.filter(performer -> performer.getExperience() < 1 || performer.getExperience() > 50)
+				.collect(Collectors.toList());
 	}
 
 	/**

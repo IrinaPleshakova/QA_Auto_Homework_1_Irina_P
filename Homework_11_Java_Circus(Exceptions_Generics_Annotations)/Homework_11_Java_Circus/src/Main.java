@@ -22,16 +22,15 @@ public class Main {
 
 		List<CircusPerformer> invalidPerformers = ourCircus.getInvalidPerformers();
 		if (!invalidPerformers.isEmpty()) {
-			System.out.println("\nInvalid experience for the following performers:");
-			for (CircusPerformer performer : invalidPerformers) {
-				System.out.println(performer.getName() + ", " + performer.getExperienceMessage());
-			}
+			System.out.println("\nPerformers with inappropriate experience: ");
+			invalidPerformers.forEach(performer ->
+					System.out.println(performer.getName() + ", " + performer.getExperienceMessage()));
 
-			System.out.println("\nPerformers with invalid experience will be removed:");
-			for (CircusPerformer performer : invalidPerformers) {
+			System.out.println("\nPerformers with inappropriate experience will be removed:");
+			invalidPerformers.forEach(performer -> {
 				ourCircus.removePerformer(performer);
 				System.out.println(performer.getName());
-			}
+			});
 		}
 
 		System.out.println("\nPerformers in our circus after removal:");
