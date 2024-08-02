@@ -55,4 +55,9 @@ public class CircusPerformer {
 			this.experience = experience;
 		}
 	}
+
+	@RunImmediately(times = 2)
+	public void printFullPerformerInfo() {
+		System.out.println("Name: " + name + ", Act: " + act + ", Experience: " + experience);
+	}
 }

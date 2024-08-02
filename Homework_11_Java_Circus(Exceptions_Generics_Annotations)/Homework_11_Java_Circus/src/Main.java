@@ -1,3 +1,4 @@
+import java.lang.reflect.Method;
 import java.util.List;
 
 /**
@@ -35,5 +36,20 @@ public class Main {
 
 		System.out.println("\nPerformers in our circus after removal:");
 		ourCircus.printAllPerformers();
+
+		for (CircusPerformer performer : ourCircus.getPerformers()) {
+			for (Method method : performer.getClass().getDeclaredMethods()) {
+				if (method.isAnnotationPresent(RunImmediately.class)) {
+					RunImmediately annotation = method.getAnnotation(RunImmediately.class);
+					for (int i = 0; i < annotation.times(); i++) {
+						try {
+							method.invoke(performer);
+						} catch (Exception e) {
+							System.out.println("Failed to invoke method: " + method.getName() + " on performer: " + performer.getName());
+						}
+					}
+				}
+			}
+		}
 	}
 }

@@ -79,4 +79,8 @@ public class Circus<T extends CircusPerformer> {
 			System.out.println("Error loading from file: " + e.getMessage());
 		}
 	}
+	
+	public List<T> getPerformers() {
+		return performers;
+	}
 }
