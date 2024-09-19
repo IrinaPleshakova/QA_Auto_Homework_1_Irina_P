@@ -18,23 +18,6 @@ public class CircusPerformer {
 		return experience;
 	}
 
-	public String getExperienceMessage() {
-		if (experience < 1 || experience > 50) {
-			return "Experience should be between 1 and 50 years (now " + experience + ")";
-		} else {
-			return experience + " years of experience.";
-		}
-	}
-
-	/**
-	 * Exception class for invalid experience values.
-	 */
-	public static class InvalidExperienceException extends Exception {
-		public InvalidExperienceException(String message) {
-			super(message);
-		}
-	}
-
 	public CircusPerformer(String name, String act, int experience) {
 		this.name = name;
 		this.act = act;
@@ -44,16 +27,16 @@ public class CircusPerformer {
 	/**
 	 * Sets the experience of the performer.
 	 */
-	private void setExperience(int experience) {
+	public void setExperience(int experience) {
+		this.experience = experience;
 		if (experience < 1 || experience > 50) {
-			try {
-				throw new InvalidExperienceException("Experience should be between 1 and 50 years (now " + experience + ")");
-			} catch (InvalidExperienceException e) {
-				this.experience = experience;
-			}
-		} else {
-			this.experience = experience;
+			System.err.println("Invalid experience for " + name + ": " + experience + " years (should be between 1 and 50).");
 		}
+	}
+
+	@Override
+	public String toString() {
+		return String.format("%s, %s, %d", name, act, experience);
 	}
 
 	@RunImmediately(times = 2)

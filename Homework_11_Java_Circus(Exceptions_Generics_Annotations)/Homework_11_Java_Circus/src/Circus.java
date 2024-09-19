@@ -21,11 +21,13 @@ public class Circus<T extends CircusPerformer> {
 	 * Removes a performer from the circus.
 	 */
 	public T removePerformer(T performer) {
-		if (performers != null && performers.remove(performer)) {
-			return performer;
-		} else {
+		if (performers == null) {
 			return null;
 		}
+		if (performers.remove(performer)) {
+			return performer;
+		}
+		return null;
 	}
 
 	/**
@@ -33,7 +35,7 @@ public class Circus<T extends CircusPerformer> {
 	 */
 	public void printAllPerformers() {
 		performers.forEach(performer ->
-				System.out.println(performer.getName() + ", " + performer.getAct() + ", " + performer.getExperienceMessage()));
+				System.out.println(performer));
 	}
 
 	/**
@@ -51,7 +53,7 @@ public class Circus<T extends CircusPerformer> {
 	public void saveToFile(String filename) {
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
 			for (T performer : performers) {
-				writer.write(performer.getName() + ", " + performer.getAct() + ", " + performer.getExperience());
+				writer.write(performer.toString());
 				writer.newLine();
 			}
 		} catch (IOException e) {
@@ -72,14 +74,15 @@ public class Circus<T extends CircusPerformer> {
 					String name = parts[0];
 					String act = parts[1];
 					int experience = Integer.parseInt(parts[2]);
-					addPerformer((T) new CircusPerformer(name, act, experience));
+					CircusPerformer performer = new CircusPerformer(name, act, experience);
+					addPerformer((T) performer);
 				}
 			}
 		} catch (IOException e) {
 			System.out.println("Error loading from file: " + e.getMessage());
 		}
 	}
-	
+
 	public List<T> getPerformers() {
 		return performers;
 	}

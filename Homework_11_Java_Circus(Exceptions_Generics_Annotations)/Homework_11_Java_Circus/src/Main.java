@@ -15,29 +15,29 @@ public class Main {
 
 		circus.saveToFile("circusPerformers.txt");
 
-		Circus<CircusPerformer> ourCircus = new Circus<>();
-		ourCircus.loadFromFile("circusPerformers.txt");
+		Circus<CircusPerformer> loadedCircus = new Circus<>();
+		loadedCircus.loadFromFile("circusPerformers.txt");
 
-		System.out.println("Performers in our circus:");
-		ourCircus.printAllPerformers();
+		System.out.println("Performers in the circus:");
+		loadedCircus.printAllPerformers();
 
-		List<CircusPerformer> invalidPerformers = ourCircus.getInvalidPerformers();
+		List<CircusPerformer> invalidPerformers = loadedCircus.getInvalidPerformers();
 		if (!invalidPerformers.isEmpty()) {
 			System.out.println("\nPerformers with inappropriate experience: ");
 			invalidPerformers.forEach(performer ->
-					System.out.println(performer.getName() + ", " + performer.getExperienceMessage()));
+					System.out.println(performer.getName() + ", " + performer.getExperience()));
 
-			System.out.println("\nPerformers with inappropriate experience will be removed:");
+			System.out.println("\nRemoving performers with inappropriate experience:");
 			invalidPerformers.forEach(performer -> {
-				ourCircus.removePerformer(performer);
-				System.out.println(performer.getName());
+				loadedCircus.removePerformer(performer);
+				System.out.println("Removed: " + performer.getName());
 			});
 		}
 
-		System.out.println("\nPerformers in our circus after removal:");
-		ourCircus.printAllPerformers();
+		System.out.println("\nPerformers in the circus after removal:");
+		loadedCircus.printAllPerformers();
 
-		for (CircusPerformer performer : ourCircus.getPerformers()) {
+		loadedCircus.getPerformers().forEach(performer -> {
 			for (Method method : performer.getClass().getDeclaredMethods()) {
 				if (method.isAnnotationPresent(RunImmediately.class)) {
 					RunImmediately annotation = method.getAnnotation(RunImmediately.class);
@@ -45,11 +45,11 @@ public class Main {
 						try {
 							method.invoke(performer);
 						} catch (Exception e) {
-							System.out.println("Failed to invoke method: " + method.getName() + " on performer: " + performer.getName());
+							System.err.println("Failed to invoke method: " + method.getName() + " on performer: " + performer.getName());
 						}
 					}
 				}
 			}
-		}
+		});
 	}
 }
